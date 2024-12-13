@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/3ed2e8cef0.js" crossorigin="anonymous"></script>
+  <title>devjobs</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <section class="header">
+      <div class="logo">
+        <img src="assets/images/logo.svg" alt="devjobs logo">
+      </div>
+      <div class="mode-switch">
+        <img src="assets/images/sun.svg">
+        <input id="modeSwitchBtn" type="checkbox">
+        <img src="assets/images/moon.svg">
+      </div>
+      <div class="search-input">
+        <div class="search-input-container">
+          <input type="text" id="searchInput" placeholder="Filter by title…">
+          <div class="search-input-container-wrapper">
+            <i class="fa-solid fa-filter"></i>
+            <div class="search-btn">
+              <img src="assets/images/search-icon.svg">
+            </div>
+          </div>
+        </div>
+      </div>
+      <form id="filterForm">
+        <div class="title-input">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" name="title" placeholder="Filter by title…">
+        </div>
+        <div class="location-input">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" name="location" placeholder="Filter by location…">
+        </div>
+        <label><input type="checkbox" name="contract"> Full Time</label>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+    <section class="company-grid-container">
+    </section>
+    <div class="load-more-btn">
+      <button id="loadMoreBtn">Load More</button>
+    </div>
+  </div>
+</body>
+</html>
