@@ -11,36 +11,50 @@
 <body>
   <div class="container">
     <section class="header">
-      <div class="logo">
-        <img src="assets/images/logo.svg" alt="devjobs logo">
-      </div>
-      <div class="mode-switch">
-        <img src="assets/images/sun.svg">
-        <input id="modeSwitchBtn" type="checkbox">
-        <img src="assets/images/moon.svg">
-      </div>
-      <div class="search-input">
-        <div class="search-input-container">
-          <input type="text" id="searchInput" placeholder="Filter by title…">
-          <div class="search-input-container-wrapper">
-            <i class="fa-solid fa-filter"></i>
-            <div class="search-btn">
-              <img src="assets/images/search-icon.svg">
+      <div class="header__wrapper">
+        <div class="logo">
+          <img src="assets/images/logo.svg" alt="devjobs logo">
+        </div>
+        <div class="mode-switch">
+          <img src="assets/images/sun.svg">
+          <input id="modeSwitchBtn" type="checkbox">
+          <img src="assets/images/moon.svg">
+        </div>
+        <div class="search-input">
+          <form id="filterFormMobile">
+            <div class="search-input-container">
+              <input type="text" id="searchInput" placeholder="Filter by title…" name="title">
+              <div class="search-input-container-wrapper">
+                <i class="fa-solid fa-filter" id="filterFormDialogBtn"></i>
+                <button type="submit" class="search-btn" id="searchBtn">
+                  <img src="assets/images/search-icon.svg">
+                </button>
+              </div>
             </div>
-          </div>
+            <dialog id="filterFormDialog">
+              <div class="filter-form-dialog-container">
+                <div class="location-input">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <input type="text" name="location" placeholder="Filter by location…">
+                </div>
+                <label class="chechbox-input"><input type="checkbox" name="contract"> Full Time Only</label>
+                <button id="submitBtnMobile" type="submit">Search</button>
+              </div>
+            </dialog>
+          </form>
         </div>
       </div>
       <form id="filterForm">
         <div class="title-input">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" name="title" placeholder="Filter by title…">
+          <input type="text" name="title" placeholder="Filter by title…" id="titleInput">
         </div>
         <div class="location-input">
           <i class="fa-solid fa-location-dot"></i>
           <input type="text" name="location" placeholder="Filter by location…">
         </div>
-        <label><input type="checkbox" name="contract"> Full Time</label>
-        <button type="submit">Search</button>
+        <label class="chechbox-input"><input type="checkbox" name="contract"> Full Time</label>
+        <button id="submitBtn" type="submit">Search</button>
       </form>
     </section>
     <section class="company-grid-container">

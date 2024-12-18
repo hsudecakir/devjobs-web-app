@@ -39,6 +39,7 @@ body {
 	line-height: 1;
   font-family: "Kumbh Sans", sans-serif;
   background-color: var(--light-gray);
+  transition: all 0.5s;
 }
 ol, ul {
 	list-style: none;
@@ -60,6 +61,11 @@ table {
   font-family: "Kumbh Sans", sans-serif;
 }
 
+body.dark-mode{
+  background-color: var(--midnight);
+  transition: all 0.5s;
+}
+
 .header{
   background: url(../images/bg-mobile.png) no-repeat;
   background-size: cover;
@@ -69,6 +75,12 @@ table {
   padding: 32px 24px 72px;
   position: relative;
   margin-bottom: 97px;
+}
+
+.header__wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mode-switch{
@@ -130,6 +142,14 @@ table {
   color: var(--very-dark-blue);
 }
 
+body.dark-mode .search-input-container input, body.dark-mode .company-grid-item{
+  background-color: var(--very-dark-blue);
+}
+
+body.dark-mode .search-input-container input::placeholder{
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .search-input-container-wrapper{
   position: absolute;
   top: 16px;
@@ -144,6 +164,10 @@ table {
   color: var(--dark-gray);
 }
 
+body.dark-mode .search-input-container-wrapper i, body.dark-mode .company-site .company-name{
+  color: var(--white);
+}
+
 .search-btn{
   width: 48px;
   height: 48px;
@@ -153,6 +177,8 @@ table {
   background-color: var(--violet);
   border-radius: 5px;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .company-grid-container{
@@ -208,6 +234,10 @@ table {
   margin-bottom: 12px;
 }
 
+body.dark-mode .position, body.dark-mode .search-input-container input{
+  color: var(--white);
+}
+
 .company-name{
   font-size: 16px;
   font-weight: 400;
@@ -254,6 +284,10 @@ table {
   border-radius: 6px;
 }
 
+body.dark-mode .company-site-container, body.dark-mode .apply-container, body.dark-mode .apply-now, body.dark-mode #filterForm, body.dark-mode .title-input input, body.dark-mode .location-input input{
+  background-color: var(--very-dark-blue);
+}
+
 .company-site{
   position: relative;
   display: flex;
@@ -264,6 +298,7 @@ table {
 .company-site img{
   position: absolute;
   top: -73px;
+  border-radius: 15px;
 }
 
 .company-site .company-name{
@@ -275,6 +310,12 @@ table {
   margin-bottom: 13px;
 }
 
+.company-site--wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .company-site a{
   font-size: 16px;
   font-weight: 400;
@@ -282,6 +323,7 @@ table {
   text-align: center;
   color: var(--dark-gray);
   text-decoration: none;
+  display: inline-block;
   margin-bottom: 27px;
 }
 
@@ -295,6 +337,10 @@ table {
   color: var(--violet);
   margin: 0;
   border-radius: 5px;
+}
+
+body.dark-mode .company-site .company-site-btn{
+  background-color: #1f273f;
 }
 
 .apply-container{
@@ -351,6 +397,10 @@ table {
   margin-bottom: 28px;
 }
 
+body.dark-mode .requirements h2, body.dark-mode .role h2, body.dark-mode .chechbox-input{
+  color: var(--white);
+}
+
 a{
   text-decoration: none;
 }
@@ -405,54 +455,180 @@ a{
   display: none;
 }
 
+.apply-now__wrapper{
+  display: none;
+}
+
+#filterFormDialog{
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 0;
+  outline: none;
+  border: none;
+  width: 100%;
+  margin-inline: 24px;
+}
+
+#filterFormDialog::backdrop, #applyDialog::backdrop{
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.filter-form-dialog-container{
+  width: 100%;
+}
+
+.filter-form-dialog-container .location-input{
+  padding: 24px;
+  border-bottom: 1px solid rgba(110, 128, 152, 0.2);
+  display: flex;
+  gap: 16px;
+}
+
+.filter-form-dialog-container .location-input i{
+  font-size: 24px;
+  color: var(--violet);
+}
+
+.filter-form-dialog-container .location-input input{
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.84px;
+  color: var(--very-dark-blue);
+}
+
+.filter-form-dialog-container .location-input input::placeholder{
+  color: rgba(25, 32, 45, 0.5);
+}
+
+.filter-form-dialog-container label{
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.chechbox-input{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.84px;
+  color: var(--very-dark-blue);
+  display: flex;
+  align-items: center;
+}
+.chechbox-input input{
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(25, 32, 45, 0.1);
+  margin: 0 16px 0 0;
+  border-radius: 3px;
+}
+
+.chechbox-input input:checked{
+  background-image: url(../images/checked.png);
+  background-repeat: no-repeat;
+  background-position: 6px;
+  background-color: var(--violet);
+}
+
+.filter-form-dialog-container button{
+  margin: 0 24px 24px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.84px;
+  text-align: center;
+  width: 85%;
+  color: var(--white);
+  background-color: var(--violet);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+body.dark-mode #filterFormDialog{
+  background-color: var(--very-dark-blue);
+}
+
+body.dark-mode .location-input input{
+  color: var(--white);
+}
+
+body.dark-mode .location-input input::placeholder{
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .chechbox-input input{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .chechbox-input input:checked{
+  background-color: var(--violet);
+}
+
+#applyDialog{
+  border: none;
+  outline: none;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+#applyDialog .apply-dialog-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+#applyDialog .apply-dialog-container p{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: center;
+  color: var(--very-dark-blue);
+}
+
+#applyDialog .apply-dialog-container button{
+  background-color: var(--violet);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.84px;
+  text-align: center;
+  padding: 16px;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body.dark-mode #applyDialog{
+  background-color: var(--very-dark-blue);
+}
+
+body.dark-mode #applyDialog .apply-dialog-container p{
+  color: var(--white);
+}
+
 @media only screen and (min-width: 768px){
   .header{
-    background: url(../images/bg-mobile.png) no-repeat;
+    background: url(../images/bg--tablet.png) no-repeat;
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 32px 24px 72px;
-    position: relative;
-    margin-bottom: 97px;
+    padding: 42px 40px 86px;
+    margin-bottom: 85px;
   }
-  
-  .mode-switch{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .mode-switch input{
-    appearance: none;
-    width: 48px;
-    height: 24px;
-    border-radius: 12px;
-    background-color: var(--white);
-    margin: 0;
-    padding: 5px;
-  }
-  
-  .mode-switch input::after{
-    content: "";
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: var(--violet);
-    transition: transform 0.4s cubic-bezier(0.85, 0, 0.15, 1);
-    display: block;
-  }
-  
-  .mode-switch input:checked::after{
-    transform: translateX(24px);
-  }
-  
   .search-input{
     display: none;
   }
   #filterForm{
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: var(--white);
     height: 80px;
     border-radius: 8px;
@@ -462,297 +638,300 @@ a{
     right: 40px;
     padding: 0px 16px 0px 24px;
   }
-  
-  .search-input-container{
-    position: relative;
-    width: 100%;
-  }
-  
-  .search-input-container input{
-    width: 100%;
-    padding: 30px 108px 30px 24px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.84px;
-    color: var(--very-dark-blue);
-    outline: none;
-    border: none;
-  }
-  
-  .search-input-container input::placeholder{
-    opacity: 0.5;
-    color: var(--very-dark-blue);
-  }
-  
-  .search-input-container-wrapper{
-    position: absolute;
-    top: 16px;
-    right: 16px;
+  .title-input, .location-input{
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
+    padding-inline: 20px;
+    border-right: 1px solid rgba(110, 128, 152, 0.2);
   }
-  
-  .search-input-container-wrapper i{
-    font-size: 20px;
-    color: var(--dark-gray);
+  .title-input{
+    padding-left: 0;
   }
-  
-  .search-btn{
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--violet);
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .company-grid-container{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    padding-inline: 24px;
-    gap: 49px;
-    margin-bottom: 32px;
-  }
-  
-  .company-grid-item{
-    position: relative;
-    background-color: var(--white);
-    width: 100%;
-    border-radius: 6px;
-    padding: 49px 9px 32px 32px;
-    cursor: pointer;
-  }
-  
-  .company-logo{
-    position: absolute;
-    top: -25px;
-    left: 32px;
-  }
-  
-  .company-grid-item--top{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 13px;
-  }
-  
-  .company-grid-item--top p{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.84px;
-    color: var(--dark-gray);
-  }
-  
-  .divider{
-    display: block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: var(--dark-gray);
-  }
-  
-  .position{
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24.8px;
-    color: var(--very-dark-blue);
-    margin-bottom: 12px;
-  }
-  
-  .company-name{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.84px;
-    color: var(--dark-gray);
-    margin-bottom: 40px;
-  }
-  
-  .location{
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 17.36px;
+  .title-input i, .location-input i{
+    font-size: 24px;
     color: var(--violet);
   }
-  
-  .load-more-btn{
+  .title-input input, .location-input input{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.84px;
+    color: var(--very-dark-blue);
+    border: none;
+    outline: none;
+    max-width: 135px;
+  }
+  .chechbox-input{
+    margin: 0 28px 0 20px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.84px;
+    color: var(--very-dark-blue);
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 62px;
   }
-  
-  .load-more-btn button{
+  .chechbox-input input{
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(25, 32, 45, 0.1);
+    margin: 0 16px 0 0;
+    border-radius: 3px;
+  }
+  body.dark-mode .title-input input, body.dark-mode .location-input input{
+    color: var(--white);
+  }
+  body.dark-mode .chechbox-input input{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .chechbox-input input:checked{
+    background-image: url(../images/checked.png);
+    background-repeat: no-repeat;
+    background-position: 6px;
     background-color: var(--violet);
-    padding: 16px 31px;
+  }
+  body.dark-mode .chechbox-input input:checked{
+    background-color: var(--violet);
+  }
+  #submitBtn{
     font-size: 16px;
     font-weight: 700;
     line-height: 19.84px;
     text-align: center;
+    padding: 16px 14px;
     color: var(--white);
+    background-color: var(--violet);
     border-radius: 5px;
     outline: none;
     border: none;
-    cursor: pointer;
   }
-  
+  .company-grid-container{
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 40px;
+    gap: 40px 11px;
+    margin-bottom: 56px;
+  }
+  .company-grid-item{
+    height: 100%;
+    padding: 49px 21px 32px 32px;
+  }
   .company-site-container{
     position: absolute;
-    top: 96px;
-    left: 24px;
-    right: 24px;
+    top: 120px;
+    left: 40px;
+    right: 40px;
     background-color: var(--white);
-    padding: 49px 32px 32px;
+    padding: 0 40px 0 0;
     border-radius: 6px;
   }
-  
   .company-site{
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
   }
-  
   .company-site img{
-    position: absolute;
-    top: -73px;
+    position: relative;
+    top: 0;
+    width: 140px;
+    margin-right: 40px;
+    border-radius: 6px 0 0 6px;
   }
-  
   .company-site .company-name{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 24.8px;
-    text-align: center;
+    line-height: 29.77px;
+    text-align: left;
     color: var(--very-dark-blue);
-    margin-bottom: 13px;
   }
-  
   .company-site a{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.84px;
-    text-align: center;
-    color: var(--dark-gray);
-    text-decoration: none;
-    margin-bottom: 27px;
+    margin-bottom: 0;
   }
-  
-  .company-site .company-site-btn{
-    padding: 16px 20px;
-    background-color: #eeeffc;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 19.84px;
-    text-align: center;
-    color: var(--violet);
-    margin: 0;
-    border-radius: 5px;
+  .company-site--wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
   }
-  
   .apply-container{
-    margin-top: 214px;
+    margin-top: 132px;
     background-color: var(--white);
-    margin-inline: 24px;
+    margin-inline: 40px;
     border-radius: 6px;
-    padding: 40px 24px;
+    padding: 48px;
   }
-  
+  .job-info__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
   .apply-container .company-grid-item--top{
     margin-bottom: 8px;
   }
-  
   .apply-container .location{
-    margin-bottom: 54px;
+    margin-bottom: 0;
   }
-  
-  .apply-now-btn{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background-color: var(--violet);
-    color: var(--white);
-    font-size: 16px;
+  .apply-container .position{
+    font-size: 28px;
     font-weight: 700;
-    line-height: 19.84px;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    margin-bottom: 32px;
+    line-height: 34.73px;
   }
-  
-  .job-description, .content, li{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-    color: var(--dark-gray);
-    margin-bottom: 40px;
+  .apply-now-btn{
+    max-width: 141px;
+    max-height: 48px;
+    margin-bottom: 0;
   }
-  
-  .content{
-    margin-bottom: 32px;
+  .apply-now{
+    margin-top: 53px;
+    padding: 23px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .requirements h2, .role h2{
+  .apply-now .position{
     font-size: 20px;
     font-weight: 700;
     line-height: 24.8px;
-    color: var(--very-dark-blue);
-    margin-bottom: 28px;
+    margin-bottom: 12px;
   }
-  
-  a{
-    text-decoration: none;
-  }
-  
-  .requirements-list{
-    margin-bottom: 40px;
-  }
-  
-  .requirements-list li{
-    display: flex;
-    align-items: start;
-    gap: 32px;
-  }
-  
-  .requirements-list li span{
-    width: 4px;
-    height: 4px;
-    background-color: var(--violet);
-    border-radius: 50%;
-    display: inline-block;
-    margin-top: 10px;
-    flex-shrink: 0;
-  }
-  
-  .requirements-list li, .role-list li{
-    margin-bottom: 8px;
-  }
-  
-  .role-list li{
-    display: flex;
-    gap: 25px;
-  }
-  
-  .role-list-counter{
+  .apply-now .company{
     font-size: 16px;
+    font-weight: 400;
+    line-height: 19.84px;
+    color: var(--dark-gray);
+  }
+  .apply-now__wrapper{
+    display: block;
+  }
+  .apply-now--wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #applyDialog{
+    padding: 40px;
+  }
+  #applyDialog .apply-dialog-container{
+    gap: 48px;
+    max-width: 550px;
+  }
+  #applyDialog .apply-dialog-container p{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+  #applyDialog .apply-dialog-container button{
+    background-color: var(--violet);
+    color: var(--white);
+    font-size: 22px;
     font-weight: 700;
-    line-height: 26px;
-    color: var(--violet);
+    line-height: 19.84px;
+    text-align: center;
+    padding: 16px 56px;
+    border-radius: 5px;
+    width: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
-  
+}
+
+@media only screen and (min-width: 1280px){
+  .header{
+    background: url(../images/bg--desktop.png) no-repeat;
+    background-size: cover;
+    padding: 46px 0 92px 0;
+    margin: 0 auto 119px;
+    display: block;
+  }
+  .header__wrapper{
+    max-width: 1110px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  #filterForm{
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0px 16px 0px 32px;
+    justify-content: space-between;
+  }
+  .title-input{
+    width: 430px;
+  }
+  .title-input input{
+    width: 100%;
+  }
+  .location-input{
+    width: 300px;
+  }
+  .title-input input, .location-input input{
+    max-width: 100%;
+  }
+  .chechbox-input{
+    margin: 0 26px 0 32px;
+  }
+  #submitBtn{
+    padding: 16px 35.5px;
+  }
+  .company-grid-container{
+    max-width: 1110px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline: 0;
+    gap: 40px 30px;
+    margin-bottom: 56px;
+  }
+  .company-grid-item{
+    padding: 49px 32px 32px 32px;
+  }
+  .company-site-container{
+    max-width: 730px;
+    margin: 0 auto;
+    padding: 0 43px 0 0;
+  }
+  .company-site img{
+    border-radius: 6px 0 0 6px;
+  }
+  .apply-container{
+    max-width: 730px;
+    margin: 0 auto;
+    margin-top: 132px;
+  }
   .apply-now{
-    margin-top: 64px;
-    background-color: var(--white);
-    padding: 24px;
+    margin-top: 80px;
+    padding: 23px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .apply-now a{
-    margin: 0;
+  .apply-now--wrapper{
+    width: 730px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mode-switch input:hover::after{
+    content: "";
+    background-color: var(--light-violet);
+    transition: all 0.5s;
+  }
+  #submitBtn, .mode-switch input, .chechbox-input input{
+    cursor: pointer;
+  }
+  #submitBtn:hover, .load-more-btn button:hover, .apply-now-btn:hover, .apply-now a:hover {
+    background-color: var(--light-violet);
+    transition: all 0.5s;
+  }
+  .company-site .company-site-btn:hover{
+    background-color: #c5c9f4;
+    transition: all 0.5s;
+  }
+  body.dark-mode .company-site .company-site-btn:hover{
+    background-color: #535862;
+    transition: all 0.5s;
   }
 }
